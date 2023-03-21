@@ -1,0 +1,47 @@
+body {
+    background-color: #5369d5;
+}
+.container-fluid{
+    background-color: #fff;
+    margin: auto;
+    font-family: 'source sans pro', calibri,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 780px;
+    font-size: 22px;
+    border: 5px solid #3388CC;
+    border-radius: 10px;
+    box-shadow: 2px 4px 3px black;
+    text-align: justify;
+    
+    
+    
+
+}
+#photo {
+    float: right;
+    text-align: right;
+}
+#entete {
+   
+    background-color: #fff;
+}
+#info {
+height: 250;
+text-align: justify;
+}
+.row{
+    color: rgb(1, 16, 11);
+}
+div{
+    margin-bottom: 10px;
+    text-align: justify;
+}
+div:hover{
+    color:  #112791;
+   
+}
+h2{
+    
+    font-size: 28px;
+    color:  #112791;
+    border-bottom: 5px solid #3388CC;;
+}
