@@ -1,144 +1,853 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>CV - Jonathan EKLOU</title>
-      <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  </head>
-  <body>
-  
-  <div class="main">
-    <div class="left">
-      <br>
-      <div class="profile-img"><img src="image/john_cv.jpg"></div>
-  
-      <div class="box-1">
-        <div class="heading">
-          <p>CONTACT</p>
-        </div>
-        <p class="p1"><i class="material-icons icons1">call</i>+2250708893545</p>
-        <p class="p1"><i class="material-icons icons1">email</i>jonathaneklou@gmail.com</p>
-      </div>
-  
-      <div class="box-1">
-        <div class="heading">
-          <p>LANGUAGES</p>
-        </div>
-  
-        <p class="p1">HTML
-        <div class="skill-container">
-          <div class="skill html"></div>
-        </div>
-        </p>
-  
-        <p class="p1">CSS
-        <div class="skill-container">
-          <div class="skill css"></div>
-        </div>
-        </p>
-  
-        <p class="p1">PHP
-        <div class="skill-container">
-          <div class="skill php"></div>
-        </div>
-        </p>
-  
-        <p class="p1">JAVASCRIPT
-        <div class="skill-container">
-          <div class="skill js"></div>
-        </div>
-        </p>
-        <p class="p1">PYTHON
-          <div class="skill-container">
-            <div class="skill python"></div>
-          </div>
-          </p>
-      </div>
-      <br>
-  
-      <div class="box-1">
-        <div class="heading">
-          <p>FRAMEWORK</p>
-        </div>
-  
-        <p class="p1">EPAPHRODITE
-        <div class="skill-container">
-          <div class="skill web"></div>
-        </div>
-        </p>
-  
-        <p class="p1">LARAVEL
-        <div class="skill-container">
-          <div class="skill gra"></div>
-        </div>
-        </p>
-        <p class="p1">REACT
-          <div class="skill-container">
-            <div class="skill gra"></div>
-          </div>
-          </p>
-  
-        
-      </div>
-      <br>
-      <div class="box-1">
-        <div class="heading">
-          <p>HOBBIES</p>
-        </div>
-  
-        <div class="h-div">
-          <i class="material-icons icons2">camera_roll</i>
-          <i class="material-icons icons2">music_note</i>
-          <i class="material-icons icons2">border_color</i>
-        </div>
-        
-      </div>
-  
-    </div>
-  
-  
-    <div class="right">
-      <div class="name-div">
-        <h1>Jonathan Messan EKLOU</h1>
-        <p>Développeur d'applications</p>
-      </div>
-  
-      <div class="box-2">
-        <h2>À PROPOS DE MOI <i class="material-icons icons3" style="font-size: 28px!important; ">perm_identity</i></h2>
-        <p class="p2">
-          Développeur web, je suis dynamique et j’aime travailler en équipe pour relever des challenges techniques. J’ai une bonne maîtrise des outils de développement et je suis en constante recherche d’apprentissage. Découvrez-en plus sur mon profil lors d’une rencontre.
-        </p>
-      </div>
-  
-  
-  
-      <div class="box-2">
-        <h2>FORMATION <i class="material-icons icons3" >border_color</i></h2>
-        <p class="p3">2016-2017 <span>Baccalauréat</span></p>
-  
-        <p class="p3">2021-2022 <span>Brevet Technicien Supérieur </span></p>
-        
-      </div>
-  
-  
-      <div class="box-2">
-        <h2>EXPERIENCE <i class="material-icons icons3" >folder</i></h2>
-        <p class="p3">Octobre 2022 décembre 2023 <span>MENA - DESPS</span></p>
-        <p class="p2">
-          Participation au développement de nouvelles applications web <br>
-          Développement d'interfaces à parti d’une base données <br>
-          Élaboration d'améliorations ergonomiques des applications. <br>
-          Réaliser le développement d'applications et du site web. <br>
-          Formation et soutien des nouveaux membres de l’équipe. <br>
-          desps.epaphrodite.org 
-        </p>
-      </div>
-  
-    </div>
-  </div>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Portfolio de Jonathan EKLOU - Développeur Full Stack spécialisé en PHP, Laravel, Epaphrodite et Flutter">
+    <meta name="keywords" content="Développeur Full Stack, PHP, Laravel, Flutter, Epaphrodite, Portfolio, Côte d'Ivoire">
+    <meta name="author" content="Jonathan EKLOU">
+    <title>Jonathan EKLOU | Portfolio - Développeur Full Stack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a855f7;
+            border-radius: 10px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1), transparent);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-text .tagline {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .description {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #a855f7;
+            color: #a855f7;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            background: #a855f7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-photo {
+            text-align: center;
+        }
+
+        .hero-photo img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(168, 85, 247, 0.5);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .hero-photo img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Section Titres */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        /* Compétences */
+        .skills-container {
+            background: rgba(255,255,255,0.02);
+            border-radius: 32px;
+            padding: 2rem;
+        }
+
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills-category h3 {
+            font-size: 1.2rem;
+            color: #a855f7;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            background: rgba(168, 85, 247, 0.2);
+            border-color: #a855f7;
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .project-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tech span {
+            background: rgba(168, 85, 247, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .project-features li {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-features li i {
+            color: #a855f7;
+            font-size: 0.7rem;
+        }
+
+        /* Expériences */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            background: rgba(168, 85, 247, 0.05);
+            transform: translateX(10px);
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: 700;
+            color: #a855f7;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content .company {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        /* Formation */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            transition: all 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+        }
+
+        .education-card i {
+            font-size: 2rem;
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .year {
+            color: #a855f7;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            font-size: 1rem;
+        }
+
+        /* Contact & Référence */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(124, 58, 237, 0.05));
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(168, 85, 247, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #a855f7;
+        }
+
+        .reference-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            section {
+                padding: 4rem 1.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .timeline-date {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-photo img {
+                width: 220px;
+                height: 220px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Jonathan <span>EKLOU</span></div>
+        <div class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#experiences">Expériences</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Je suis <span class="gradient-text">Jonathan EKLOU</span></h1>
+                <div class="tagline">Développeur Full Stack & Créateur d'Applications</div>
+                <div class="description">
+                    Passionné par le développement d'applications web et mobiles innovantes. 
+                    Spécialisé dans les frameworks PHP (Laravel, Epaphrodite) et Flutter. 
+                    Je crée des solutions sur mesure pour l'éducation, les communautés et les marketplaces locales.
+                </div>
+                <div class="btn-group">
+                    <a href="#projets" class="btn-primary"><i class="fas fa-code"></i> Voir mes projets</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="image/john_cv.jpg" 
+                     alt="Jonathan EKLOU">
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences">
+        <div class="container">
+            <h2 class="section-title">Compétences Techniques</h2>
+            <p class="section-subtitle">Les technologies que j'utilise au quotidien</p>
+            
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3><i class="fas fa-code"></i> Langages & Frameworks Backend</h3>
+                    <div class="skills-grid">
+                        <span class="skill-card">PHP 8.x</span>
+                        <span class="skill-card">Laravel 11</span>
+                        <span class="skill-card">Epaphrodite Framework</span>
+                        <span class="skill-card">Python</span>
+                        <span class="skill-card">REST API</span>
+                        <span class="skill-card">WebSocket</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-mobile-alt"></i> Frontend & Mobile</h3>
+                    <div class="skills-grid">
+                        <span class="skill-card">Flutter / Dart</span>
+                        <span class="skill-card">JavaScript</span>
+                        <span class="skill-card">React.js</span>
+                        <span class="skill-card">HTML5/CSS3</span>
+                        <span class="skill-card">TailwindCSS</span>
+                        <span class="skill-card">Bootstrap 5</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-database"></i> Bases de données</h3>
+                    <div class="skills-grid">
+                        <span class="skill-card">MySQL</span>
+                        <span class="skill-card">PostgreSQL</span>
+                        <span class="skill-card">SQLite</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-tools"></i> Outils & Méthodologies</h3>
+                    <div class="skills-grid">
+                        <span class="skill-card">Git / GitHub</span>
+                        <span class="skill-card">UI/UX Design</span>
+                        <span class="skill-card">Cybersécurité</span>
+                        <span class="skill-card">Agile / Scrum</span>
+                        <span class="skill-card">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <p class="section-subtitle">Des réalisations concrètes qui font la différence</p>
+            
+            <div class="projects-grid">
+                <!-- MySchool -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-school"></i></div>
+                    <h3>MySchool</h3>
+                    <p>Application SaaS complète de gestion d'écoles primaires et secondaires</p>
+                    <div class="project-tech">
+                        <span>PHP/Laravel</span>
+                        <span>MySQL</span>
+                        <span>TailwindCSS</span>
+                        <span>Flutter</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Gestion élèves, enseignants, classes</li>
+                        <li><i class="fas fa-check-circle"></i> Système de notes et bulletins automatisés</li>
+                        <li><i class="fas fa-check-circle"></i> Paiements de scolarité intégrés</li>
+                        <li><i class="fas fa-check-circle"></i> Tableaux de bord personnalisés</li>
+                    </ul>
+                </div>
+
+                <!-- Gestion Église -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-church"></i></div>
+                    <h3>Gestion des Membres & Suivi des Âmes</h3>
+                    <p>Solution intégrale pour la gestion d'églises et le suivi pastoral</p>
+                    <div class="project-tech">
+                        <span>Epaphrodite</span>
+                        <span>PostgreSQL</span>
+                        <span>Bootstrap 5</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Gestion des membres, groupes, cellules</li>
+                        <li><i class="fas fa-check-circle"></i> Suivi des visiteurs et événements</li>
+                        <li><i class="fas fa-check-circle"></i> Statistiques et rapports d'évolution</li>
+                        <li><i class="fas fa-check-circle"></i> Gestion des dons et contributions</li>
+                    </ul>
+                </div>
+
+                <!-- TrouveMoi -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>TrouveMoi</h3>
+                    <p>Plateforme de mise en relation entre clients et prestataires de services</p>
+                    <div class="project-tech">
+                        <span>Flutter</span>
+                        <span>Epaphrodite API</span>
+                        <span>WebSocket</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Géolocalisation et recherche par catégorie</li>
+                        <li><i class="fas fa-check-circle"></i> Chat en temps réel (WebSocket)</li>
+                        <li><i class="fas fa-check-circle"></i> Système d'évaluation et notation</li>
+                        <li><i class="fas fa-check-circle"></i> Paiement intégré et disponibilités</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences -->
+    <section id="experiences">
+        <div class="container">
+            <h2 class="section-title">Expériences Professionnelles</h2>
+            <p class="section-subtitle">Mon parcours et mes réalisations</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <div class="timeline-content">
+                        <h4>Développeur Web Full Stack</h4>
+                        <div class="company">Ministère de l'Éducation Nationale - DESPS</div>
+                        <p>Développement et maintenance de l'application mena-desp.s.org. Conception de modules de gestion des données éducatives, optimisation des performances et sécurisation des applications.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Développeur Freelance</h4>
+                        <div class="company">RIMAK SCHOOL</div>
+                        <p>Conception et développement du site web dynamique rimak-school.com. Interface utilisateur réactive, backend sécurisé et formation de l'équipe.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-content">
+                        <h4>Contributeur Open Source</h4>
+                        <div class="company">Epaphrodite Framework</div>
+                        <p>Contribution à l'amélioration des performances, renforcement de la sécurité, ajout de nouvelles fonctionnalités et correction de bugs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Formation</h2>
+            <p class="section-subtitle">Mon parcours académique</p>
+            
+            <div class="education-grid">
+                <div class="education-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="year">2021 - 2022</div>
+                    <h4>Brevet de Technicien Supérieur (BTS)</h4>
+                    <p>Informatique de Gestion</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-certificate"></i>
+                    <div class="year">2016 - 2017</div>
+                    <h4>Baccalauréat</h4>
+                    <p>Série D</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-award"></i>
+                    <div class="year">2012 - 2013</div>
+                    <h4>BEPC</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Référence -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">Me Contacter</h2>
+                <p class="section-subtitle">Disponible pour de nouvelles opportunités</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+225 07 08 89 35 44</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>jonathaneklou@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>Jonath-Mess-eklou</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Abidjan, Côte d'Ivoire</span>
+                    </div>
+                </div>
+
+                <div class="reference-card">
+                    <i class="fas fa-user-tie" style="font-size: 2rem; color: #a855f7; margin-bottom: 1rem; display: inline-block;"></i>
+                    <h3>Référence</h3>
+                    <p><strong>Aimé N'dri</strong></p>
+                    <p>Responsable du service développement et digital - DESPS</p>
+                    <p><i class="fas fa-phone"></i> 07 08 63 16 45</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Jonathan EKLOU - Développeur Full Stack | Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .timeline-item, .education-card, .skill-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
