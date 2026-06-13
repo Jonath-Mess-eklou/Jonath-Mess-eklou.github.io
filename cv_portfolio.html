@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Portfolio de Jonathan EKLOU - Développeur Full Stack, Expert en Cybersécurité & Cryptographie">
+    <meta name="keywords" content="Développeur Full Stack, PHP, Laravel, Flutter, Epaphrodite, Cybersécurité, Cryptographie, Côte d'Ivoire">
+    <meta name="author" content="Jonathan EKLOU">
+    <link rel="icon" href="image/john_cv.jpg">
+    <title>Jonathan EKLOU | Full Stack Developer & Cybersecurity Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff6b35;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: 0.1s;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background: #ff6b35;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: 0.05s;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Particles Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 10px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff, #ff6b35, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typed-text {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin: 1rem 0;
+            min-height: 60px;
+        }
+
+        .typed-text::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .description {
+            color: #a0a0a0;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35, #ffb347);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #0a0a0a;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff6b35;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #ff6b35;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: #ff6b35;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+        .hero-photo {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-photo img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 107, 53, 0.5);
+            box-shadow: 0 0 50px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            margin-bottom: 3rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 107, 53, 0.15);
+            border-color: #ff6b35;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35, #ffb347);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-icon i {
+            color: #0a0a0a;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tech span {
+            background: rgba(255, 107, 53, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #ff6b35;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .project-features li {
+            font-size: 0.75rem;
+            color: #c0c0c0;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-features li i {
+            color: #ff6b35;
+            font-size: 0.7rem;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            min-width: 150px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .stat-label {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            border-color: #ff6b35;
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content .company {
+            color: #a0a0a0;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.8rem;
+            color: #c0c0c0;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b35;
+        }
+
+        .education-card i {
+            font-size: 2rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .year {
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(10, 10, 10, 0.9));
+            border-radius: 30px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 107, 53, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            color: #ff6b35;
+        }
+
+        .reference-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            color: #a0a0a0;
+            font-size: 0.8rem;
+        }
+
+        .badge-pro, .badge-fullstack {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-pro {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .badge-fullstack {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .cursor, .cursor-dot {
+                display: none;
+            }
+            body {
+                cursor: auto;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .timeline-date {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <nav class="navbar">
+        <div class="logo">{ J.E }</div>
+        <div class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#experiences">Expériences</a>
+            <a href="#formation">Formation</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge"><i class="fas fa-code"></i> Full Stack Developer & Security Expert</span>
+                <h1>Je transforme les <span class="gradient-text">idées</span><br>en solutions <span class="gradient-text">exceptionnelles</span></h1>
+                <div class="typed-text" id="typed-text"></div>
+                <div class="description">
+                    Développeur Full Stack passionné avec une double expertise en cybersécurité et cryptographie. 
+                    Je crée des applications web et mobiles performantes, sécurisées et innovantes. 
+                    La protection des données et le chiffrement sont au cœur de mes préoccupations.
+                </div>
+                <div class="btn-group">
+                    <a href="#projets" class="btn-primary"><i class="fas fa-arrow-right"></i> Explorer mes projets</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                    <button onclick="generateProfessionalPDF()" class="btn-outline"><i class="fas fa-download"></i> Télécharger CV</button>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="image/john_cv.jpg" alt="Jonathan EKLOU" id="profile-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-container">
+        <div class="stat-item"><div class="stat-number">4+</div><div class="stat-label">Années d'expérience</div></div>
+        <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Projets réalisés</div></div>
+        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Satisfaction client</div></div>
+        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Support disponible</div></div>
+    </div>
+
+    <!-- Compétences -->
+    <section id="competences">
+        <div class="container">
+            <h2 class="section-title">Expertises <span class="gradient-text">Techniques</span></h2>
+            <p class="section-subtitle">Les technologies que je maîtrise</p>
+            <div class="skills-grid">
+                <span class="skill-card">PHP 8.x</span>
+                <span class="skill-card">Laravel 11</span>
+                <span class="skill-card">Epaphrodite</span>
+                <span class="skill-card">Flutter/Dart</span>
+                <span class="skill-card">React.js</span>
+                <span class="skill-card">Python</span>
+                <span class="skill-card">MySQL/PostgreSQL</span>
+                <span class="skill-card">REST API</span>
+                <span class="skill-card">WebSocket</span>
+                <span class="skill-card">Ethical Hacking</span>
+                <span class="skill-card">Cryptographie</span>
+                <span class="skill-card">Cryptanalyse</span>
+                <span class="skill-card">AES/RSA</span>
+                <span class="skill-card">Docker</span>
+                <span class="skill-card">Git/GitHub</span>
+                <span class="skill-card">Kali Linux</span>
+                <span class="skill-card">Burp Suite</span>
+                <span class="skill-card">Wireshark</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+        <div class="container">
+            <h2 class="section-title">Réalisations <span class="gradient-text">Phare</span></h2>
+            <p class="section-subtitle">Des projets concrets qui font la différence</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-school"></i></div>
+                    <h3>MySchool <span class="badge-pro">Web</span></h3>
+                    <p>SaaS complet de gestion d'établissements scolaires</p>
+                    <div class="project-tech"><span>PHP/Epaphrodite</span><span>MySQL</span><span>TailwindCSS</span></div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Gestion élèves, enseignants, classes</li>
+                        <li><i class="fas fa-check-circle"></i> Système de notes et bulletins automatisés</li>
+                        <li><i class="fas fa-check-circle"></i> Paiements de scolarité intégrés</li>
+                        <li><i class="fas fa-check-circle"></i> API REST sécurisée</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>TrouveMoi <span class="badge-fullstack">Web/Mobile</span></h3>
+                    <p>Marketplace de mise en relation clients-prestataires</p>
+                    <div class="project-tech"><span>Flutter</span><span>Epaphrodite API</span><span>WebSocket</span></div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> PWA + Apps mobiles iOS/Android</li>
+                        <li><i class="fas fa-check-circle"></i> Géolocalisation et recherche avancée</li>
+                        <li><i class="fas fa-check-circle"></i> Chat chiffré en temps réel</li>
+                        <li><i class="fas fa-check-circle"></i> Notifications push sécurisées</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-church"></i></div>
+                    <h3>EkklesiaFlow <span class="badge-pro">Web</span></h3>
+                    <p>Solution intégrale de gestion d'églises</p>
+                    <div class="project-tech"><span>Epaphrodite</span><span>PostgreSQL</span><span>Bootstrap 5</span></div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Gestion des membres et cellules</li>
+                        <li><i class="fas fa-check-circle"></i> Suivi des visiteurs et événements</li>
+                        <li><i class="fas fa-check-circle"></i> Statistiques et rapports d'évolution</li>
+                        <li><i class="fas fa-check-circle"></i> Données chiffrées (RGPD compliant)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences -->
+    <section id="experiences">
+        <div class="container">
+            <h2 class="section-title">Parcours <span class="gradient-text">Professionnel</span></h2>
+            <p class="section-subtitle">Mon évolution professionnelle</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-content">
+                        <h4>Développeur Freelance</h4>
+                        <div class="company">RIMAK SCHOOL / EPV LA RÉUSSITE</div>
+                        <p>Développement de sites web dynamiques, gestion scolaire, communication parents-enseignants, sécurisation des données (chiffrement AES-256).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <div class="timeline-content">
+                        <h4>Développeur Web Full Stack</h4>
+                        <div class="company">Ministère de l'Éducation Nationale - DESPS</div>
+                        <p>Développement et maintenance de mena-desps.org, optimisation des performances, sécurisation des données éducatives.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-content">
+                        <h4>Contributeur Open Source</h4>
+                        <div class="company">Epaphrodite Framework</div>
+                        <p>Contribution à l'amélioration des performances, renforcement de la sécurité (modules de chiffrement).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section id="formation">
+        <div class="container">
+            <h2 class="section-title">Formation & <span class="gradient-text">Certifications</span></h2>
+            <p class="section-subtitle">Mon parcours académique</p>
+            <div class="education-grid">
+                <div class="education-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="year">2024</div>
+                    <h4>Ethical Hacking (CEH)</h4>
+                    <p>EC-Council's Certified Ethical Hacker</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-lock"></i>
+                    <div class="year">2024</div>
+                    <h4>Cryptographie Avancée</h4>
+                    <p>AES, RSA, ECC, PKI</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="year">2021-2022</div>
+                    <h4>BTS IDA</h4>
+                    <p>Informatique Développeur d'Applications</p>
+                </div>
+                <div class="education-card">
+                    <i class="fas fa-university"></i>
+                    <div class="year">2018-2020</div>
+                    <h4>Licence Math-Info</h4>
+                    <p>Université Nangui Abrogoua</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Prêt à <span class="gradient-text">collaborer</span> ?</h2>
+                <p style="color: #a0a0a0;">Discutons de votre projet et donnons vie à vos idées</p>
+                <div class="contact-info">
+                    <a href="tel:+2250708893544" class="contact-item"><i class="fas fa-phone"></i><span>+225 07 08 89 35 44</span></a>
+                    <a href="mailto:jonathaneklou@gmail.com" class="contact-item"><i class="fas fa-envelope"></i><span>jonathaneklou@gmail.com</span></a>
+                    <a href="https://github.com/Jonath-Mess-eklou" target="_blank" class="contact-item"><i class="fab fa-github"></i><span>GitHub</span></a>
+                    <a href="https://www.linkedin.com/in/jonathan-eklou" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+                </div>
+                <div class="reference-card">
+                    <i class="fas fa-user-tie" style="font-size: 1.5rem; color: #ff6b35; margin-bottom: 0.5rem;"></i>
+                    <h4>Référence</h4>
+                    <p><strong>Aimé N'dri</strong> - Responsable développement digital - DESPS</p>
+                    <p><i class="fas fa-phone"></i> 07 08 63 16 45</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Jonathan EKLOU - Full Stack Developer & Cybersecurity Expert</p>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        if (cursor && cursorDot) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            document.querySelectorAll('a, button, .project-card, .skill-card, .timeline-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.borderColor = '#ffb347';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.borderColor = '#ff6b35';
+                });
+            });
+        }
+
+        // Particles
+        const canvas = document.getElementById('particles-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2 + 1, speedX: (Math.random() - 0.5) * 0.5, speedY: (Math.random() - 0.5) * 0.5, opacity: Math.random() * 0.5 });
+            }
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 107, 53, ${p.opacity})`;
+                    ctx.fill();
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        }
+
+        // Typed text
+        const roles = ['Développeur Full Stack', 'Expert en Cybersécurité', 'Spécialiste Cryptographie', 'Innovateur technologique'];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        const typedElement = document.getElementById('typed-text');
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typedElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+            } else {
+                typedElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentRole.length) { isDeleting = true; setTimeout(() => {}, 1500); }
+            }
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
+        }
+        typeEffect();
+
+        // Smooth scroll
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) navbar.style.padding = '1rem 5%';
+            else navbar.style.padding = '1.5rem 5%';
+        });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.project-card, .timeline-item, .education-card, .stat-item, .skill-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Professional PDF Generation - Version optimisée
+        function generateProfessionalPDF() {
+            const currentYear = new Date().getFullYear();
+            
+            // Récupérer la photo encodée
+            const img = document.getElementById('profile-photo');
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            const photoBase64 = canvas.toDataURL('image/jpeg', 0.9);
+            
+            const htmlContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Jonathan EKLOU - CV</title>
+                <style>
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    body {
+                        font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+                        background: white;
+                        padding: 40px;
+                        color: #1a1a1a;
+                        line-height: 1.4;
+                    }
+                    .cv-container {
+                        max-width: 1100px;
+                        margin: 0 auto;
+                        background: white;
+                    }
+                    
+                    /* Header */
+                    .cv-header {
+                        display: flex;
+                        align-items: center;
+                        gap: 35px;
+                        margin-bottom: 30px;
+                        padding-bottom: 25px;
+                        border-bottom: 3px solid #ff6b35;
+                    }
+                    .cv-photo {
+                        flex-shrink: 0;
+                    }
+                    .cv-photo img {
+                        width: 140px;
+                        height: 140px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 3px solid #ff6b35;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    }
+                    .cv-titles {
+                        flex: 1;
+                    }
+                    .cv-name {
+                        font-size: 34px;
+                        font-weight: 800;
+                        color: #ff6b35;
+                        margin-bottom: 8px;
+                        letter-spacing: 1px;
+                    }
+                    .cv-title {
+                        font-size: 18px;
+                        color: #333;
+                        margin-bottom: 15px;
+                        font-weight: 500;
+                    }
+                    .cv-contact {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                        font-size: 12px;
+                        color: #555;
+                    }
+                    .cv-contact span {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                    }
+                    
+                    /* Layout 2 colonnes */
+                    .cv-two-columns {
+                        display: grid;
+                        grid-template-columns: 1fr 1.6fr;
+                        gap: 35px;
+                    }
+                    
+                    /* Colonne gauche */
+                    .cv-left {
+                        background: #f9f9f9;
+                        padding: 22px;
+                        border-radius: 16px;
+                    }
+                    
+                    /* Sections */
+                    .cv-section {
+                        margin-bottom: 28px;
+                    }
+                    .cv-section-title {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #ff6b35;
+                        border-left: 3px solid #ff6b35;
+                        padding-left: 12px;
+                        margin-bottom: 14px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    
+                    /* Skills tags */
+                    .skills-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                    }
+                    .skill-item {
+                        background: white;
+                        padding: 5px 14px;
+                        border-radius: 25px;
+                        font-size: 11px;
+                        font-weight: 500;
+                        color: #333;
+                        border: 1px solid #e0e0e0;
+                        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+                    }
+                    
+                    /* Soft skills */
+                    .soft-skills-list, .lang-list, .interest-list {
+                        list-style: none;
+                    }
+                    .soft-skills-list li, .lang-list li, .interest-list li {
+                        font-size: 12px;
+                        color: #444;
+                        margin-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                    .soft-skills-list li i, .lang-list li i, .interest-list li i {
+                        color: #ff6b35;
+                        width: 20px;
+                        font-size: 12px;
+                    }
+                    
+                    /* Expériences et projets */
+                    .exp-item, .project-item, .edu-item {
+                        margin-bottom: 20px;
+                    }
+                    .exp-title, .project-title, .edu-title {
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #1a1a1a;
+                    }
+                    .exp-company, .project-tech, .edu-date {
+                        font-size: 11px;
+                        color: #ff6b35;
+                        margin: 4px 0;
+                        font-weight: 500;
+                    }
+                    .exp-desc, .project-desc, .edu-desc {
+                        font-size: 11px;
+                        color: #555;
+                        margin-top: 5px;
+                        line-height: 1.5;
+                    }
+                    
+                    .divider {
+                        height: 1px;
+                        background: #e0e0e0;
+                        margin: 20px 0;
+                    }
+                    .footer-pdf {
+                        text-align: center;
+                        margin-top: 30px;
+                        padding-top: 15px;
+                        border-top: 1px solid #e0e0e0;
+                        font-size: 9px;
+                        color: #999;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="cv-container">
+                    <!-- En-tête -->
+                    <div class="cv-header">
+                        <div class="cv-photo">
+                            <img src="${photoBase64}" alt="Jonathan EKLOU">
+                        </div>
+                        <div class="cv-titles">
+                            <div class="cv-name">Jonathan EKLOU</div>
+                            <div class="cv-title">Développeur Full Stack & Expert en Cybersécurité</div>
+                            <div class="cv-contact">
+                                <span>📞 +225 07 08 89 35 44</span>
+                                <span>✉️ jonathaneklou@gmail.com</span>
+                                <span>📍 Abidjan, Côte d'Ivoire</span>
+                                <span>🐙 GitHub: Jonath-Mess-eklou</span>
+                                <span>🔗 LinkedIn: Jonathan EKLOU</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cv-two-columns">
+                        <!-- Colonne gauche -->
+                        <div class="cv-left">
+                            <!-- Profil -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">👨‍💻 Profil</div>
+                                <p style="font-size: 12px; color: #444; line-height: 1.55; text-align: justify;">
+                                    Développeur Full Stack passionné avec une double expertise en cybersécurité et cryptographie. 
+                                    Je crée des applications web et mobiles performantes, sécurisées et innovantes. 
+                                    La protection des données et le chiffrement sont au cœur de mes préoccupations.
+                                </p>
+                            </div>
+                            
+                            <!-- Compétences techniques -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">🛠️ Compétences techniques</div>
+                                <div class="skills-list">
+                                    <span class="skill-item">PHP 8.x</span>
+                                    <span class="skill-item">Laravel 11</span>
+                                    <span class="skill-item">Epaphrodite</span>
+                                    <span class="skill-item">Flutter/Dart</span>
+                                    <span class="skill-item">React.js</span>
+                                    <span class="skill-item">Python</span>
+                                    <span class="skill-item">MySQL/PostgreSQL</span>
+                                    <span class="skill-item">REST API</span>
+                                    <span class="skill-item">WebSocket</span>
+                                    <span class="skill-item">Ethical Hacking</span>
+                                    <span class="skill-item">Cryptographie</span>
+                                    <span class="skill-item">AES/RSA</span>
+                                    <span class="skill-item">Docker</span>
+                                    <span class="skill-item">Git/GitHub</span>
+                                    <span class="skill-item">Kali Linux</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Soft skills -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">💡 Soft skills</div>
+                                <ul class="soft-skills-list">
+                                    <li><i class="fas fa-lightbulb"></i> Curiosité et veille technologique</li>
+                                    <li><i class="fas fa-users"></i> Esprit d'équipe et collaboration</li>
+                                    <li><i class="fas fa-sync-alt"></i> Adaptabilité et polyvalence</li>
+                                    <li><i class="fas fa-tasks"></i> Organisation et rigueur</li>
+                                    <li><i class="fas fa-comments"></i> Communication claire et efficace</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Langues -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">🌐 Langues</div>
+                                <ul class="lang-list">
+                                    <li><i class="fas fa-language"></i> Français <span style="color:#888; font-size:10px;">(Courant - Langue maternelle)</span></li>
+                                    <li><i class="fas fa-language"></i> Anglais <span style="color:#888; font-size:10px;">(Technique - Lecture de documentation)</span></li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Centres d'intérêt -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">🎯 Centres d'intérêt</div>
+                                <ul class="interest-list">
+                                    <li><i class="fas fa-shield-alt"></i> Cybersécurité & Hacking éthique</li>
+                                    <li><i class="fas fa-lock"></i> Cryptographie & Chiffrement</li>
+                                    <li><i class="fas fa-code"></i> Open Source & Innovation</li>
+                                    <li><i class="fas fa-gamepad"></i> Nouvelles technologies</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Colonne droite -->
+                        <div class="cv-right">
+                            <!-- Expériences -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">💼 Expériences professionnelles</div>
+                                <div class="exp-item">
+                                    <div class="exp-title">Développeur Freelance</div>
+                                    <div class="exp-company">RIMAK SCHOOL / EPV LA RÉUSSITE | 2023 - Présent</div>
+                                    <div class="exp-desc">Développement de sites web dynamiques, gestion scolaire, communication parents-enseignants, sécurisation des données (chiffrement AES-256).</div>
+                                </div>
+                                <div class="exp-item">
+                                    <div class="exp-title">Développeur Web Full Stack</div>
+                                    <div class="exp-company">Ministère de l'Éducation Nationale - DESPS | 2022 - 2024</div>
+                                    <div class="exp-desc">Développement et maintenance de mena-desps.org, optimisation des performances, sécurisation des données éducatives.</div>
+                                </div>
+                                <div class="exp-item">
+                                    <div class="exp-title">Contributeur Open Source</div>
+                                    <div class="exp-company">Epaphrodite Framework | 2023 - Présent</div>
+                                    <div class="exp-desc">Contribution à l'amélioration des performances, renforcement de la sécurité (modules de chiffrement).</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Projets -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">🚀 Projets</div>
+                                <div class="project-item">
+                                    <div class="project-title">MySchool</div>
+                                    <div class="project-tech">PHP/Epaphrodite • MySQL • TailwindCSS</div>
+                                    <div class="project-desc">SaaS de gestion d'établissements scolaires : gestion élèves/enseignants, notes, bulletins, paiements.</div>
+                                </div>
+                                <div class="project-item">
+                                    <div class="project-title">TrouveMoi</div>
+                                    <div class="project-tech">Flutter • Epaphrodite API • WebSocket</div>
+                                    <div class="project-desc">Marketplace de mise en relation clients-prestataires avec géolocalisation, chat chiffré, notifications push.</div>
+                                </div>
+                                <div class="project-item">
+                                    <div class="project-title">EkklesiaFlow</div>
+                                    <div class="project-tech">Epaphrodite • PostgreSQL • Bootstrap 5</div>
+                                    <div class="project-desc">Solution de gestion d'églises : membres, cellules, événements, dons (RGPD compliant).</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Formation -->
+                            <div class="cv-section">
+                                <div class="cv-section-title">🎓 Formation</div>
+                                <div class="edu-item">
+                                    <div class="edu-title">Certification Ethical Hacking (CEH)</div>
+                                    <div class="edu-date">2024 - EC-Council</div>
+                                    <div class="edu-desc">Formation complète en tests d'intrusion et sécurisation de systèmes.</div>
+                                </div>
+                                <div class="edu-item">
+                                    <div class="edu-title">Cryptographie Avancée</div>
+                                    <div class="edu-date">2024 - Auto-formation</div>
+                                    <div class="edu-desc">Chiffrement AES/RSA, PKI, ECC, sécurisation des données.</div>
+                                </div>
+                                <div class="edu-item">
+                                    <div class="edu-title">BTS Informatique Développeur d'Applications</div>
+                                    <div class="edu-date">2021 - 2022</div>
+                                </div>
+                                <div class="edu-item">
+                                    <div class="edu-title">Licence Mathématiques-Informatique</div>
+                                    <div class="edu-date">2018 - 2020</div>
+                                    <div class="edu-desc">Université Nangui Abrogoua - Formation complète</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-pdf">
+                        <p>Référence professionnelle disponible sur demande | Aimé N'dri - Responsable développement digital DESPS - 07 08 63 16 45</p>
+                        <p>CV généré le ${new Date().toLocaleDateString('fr-FR')}</p>
+                    </div>
+                </div>
+            </body>
+            </html>`;
+            
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: `CV_Jonathan_EKLOU_${currentYear}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, letterRendering: true, useCORS: true },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(htmlContent).save();
+        }
+    </script>
+</body>
+</html>
