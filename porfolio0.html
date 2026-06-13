@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Portfolio de Jonathan EKLOU - Développeur Full Stack & Passionné de Cybersécurité">
+    <meta name="keywords" content="Développeur Full Stack, PHP, Laravel, Flutter, Epaphrodite, Cybersécurité, Côte d'Ivoire">
+    <meta name="author" content="Jonathan EKLOU">
+    <link rel="icon" href="image/john_cv.jpg">
+    <title>Jonathan EKLOU | Développeur Full Stack & Cybersécurité</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Canvas animation */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Cursor personnalisé */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff6b35;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            z-index: 1000;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.5);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b35, #f7c948, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .typed-text {
+            font-size: 1.3rem;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .typed-text span {
+            border-right: 2px solid #ff6b35;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .description {
+            color: #aaa;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35, #f7c948);
+            color: #0a0a0a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline:hover {
+            background: #ff6b35;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .hero-photo {
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 107, 53, 0.5);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+            animation: morphing 10s ease infinite;
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff6b35;
+            animation: float 4s ease infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections communes */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        /* Compétences 3D */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card-3d {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card-3d:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card-3d {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card-3d:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .project-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b35, #f7c948);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon i {
+            color: #0a0a0a;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-web { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
+        .badge-mobile { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tech span {
+            background: rgba(255, 107, 53, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #ff6b35;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff6b35, #f7c948);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-date {
+            min-width: 100px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 1.1rem;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #ff6b35;
+            border-radius: 50%;
+            position: absolute;
+            left: 114px;
+            top: 5px;
+            box-shadow: 0 0 10px #ff6b35;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            flex: 1;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(10, 10, 10, 0.9));
+            border-radius: 40px;
+            padding: 3rem;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+        }
+
+        .contact-card i {
+            font-size: 1.5rem;
+            color: #ff6b35;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            font-size: 1.3rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .social-link:hover {
+            background: #ff6b35;
+            transform: translateY(-5px);
+            color: #0a0a0a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            color: #666;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-dot {
+                left: 24px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-left: 50px;
+            }
+            .navbar {
+                width: 95%;
+                padding: 0.8rem 1.5rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-photo img {
+                max-width: 280px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-bg"></canvas>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar">
+        <div class="logo">JE<span>.</span></div>
+        <div class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#experiences">Parcours</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">
+                    <i class="fas fa-code"></i> Disponible pour mission
+                </div>
+                <h1>Je suis <span class="gradient-text">Jonathan EKLOU</span></h1>
+                <div class="typed-text">
+                    <span id="typed"></span>
+                </div>
+                <div class="description">
+                    Développeur Full Stack créatif, je transforme vos idées en expériences digitales exceptionnelles. 
+                    Spécialisé en cybersécurité, je construis des applications robustes, sécurisées et innovantes.
+                </div>
+                <div class="btn-group">
+                    <a href="#projets" class="btn-primary"><i class="fas fa-arrow-right"></i> Explorer mes projets</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-comment"></i> Discutons !</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Années d'expérience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projets livrés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Satisfaction client</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="image/john_cv.jpg" alt="Jonathan EKLOU">
+                <div class="floating-elements">
+                    <i class="fab fa-php float-icon" style="top: 10%; left: -20px; animation-delay: 0s;"></i>
+                    <i class="fab fa-laravel float-icon" style="top: 30%; right: -20px; animation-delay: 0.5s;"></i>
+                    <i class="fab fa-flutter float-icon" style="bottom: 20%; left: -15px; animation-delay: 1s;"></i>
+                    <i class="fas fa-shield-alt float-icon" style="bottom: 40%; right: -15px; animation-delay: 1.5s;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences">
+        <div class="container">
+            <h2 class="section-title">Expertises <span class="gradient-text">Techniques</span></h2>
+            <p class="section-subtitle">Les technologies qui me permettent de créer des solutions innovantes</p>
+            
+            <div class="skills-container">
+                <div class="skill-card-3d">PHP 8.x</div>
+                <div class="skill-card-3d">Laravel 11</div>
+                <div class="skill-card-3d">Epaphrodite</div>
+                <div class="skill-card-3d">Flutter/Dart</div>
+                <div class="skill-card-3d">JavaScript</div>
+                <div class="skill-card-3d">React.js</div>
+                <div class="skill-card-3d">Python</div>
+                <div class="skill-card-3d">MySQL/PostgreSQL</div>
+                <div class="skill-card-3d">REST API</div>
+                <div class="skill-card-3d">WebSocket</div>
+                <div class="skill-card-3d">Ethical Hacking (CEH)</div>
+                <div class="skill-card-3d">Cryptanalyse</div>
+                <div class="skill-card-3d">Docker</div>
+                <div class="skill-card-3d">Git/GitHub</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+        <div class="container">
+            <h2 class="section-title">Réalisations <span class="gradient-text">Phares</span></h2>
+            <p class="section-subtitle">Des projets concrets qui font la différence</p>
+            
+            <div class="projects-grid">
+                <div class="project-card-3d">
+                    <div class="project-icon"><i class="fas fa-school"></i></div>
+                    <h3>MySchool <span class="project-badge badge-web">Web</span></h3>
+                    <p>Solution SaaS complète pour la gestion d'établissements scolaires</p>
+                    <div class="project-tech">
+                        <span>PHP/Epaphrodite</span><span>MySQL</span><span>TailwindCSS</span><span>REST API</span>
+                    </div>
+                    <ul class="project-features" style="list-style: none; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Gestion complète élèves/professeurs</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Bulletins et notes automatisés</li>
+                        <li><i class="fas fa-check-circle" style="color: #ff6b35;"></i> API mobile pour synchronisation</li>
+                    </ul>
+                </div>
+
+                <div class="project-card-3d">
+                    <div class="project-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>TrouveMoi <span class="project-badge badge-mobile">Web/Mobile</span></h3>
+                    <p>Marketplace de mise en relation services clients-prestataires</p>
+                    <div class="project-tech">
+                        <span>Flutter</span><span>Epaphrodite</span><span>WebSocket</span><span>Geolocation</span>
+                    </div>
+                    <ul class="project-features" style="list-style: none; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Version Web PWA + App mobile</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Chat temps réel & géolocalisation</li>
+                        <li><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Paiement intégré & notifications push</li>
+                    </ul>
+                </div>
+
+                <div class="project-card-3d">
+                    <div class="project-icon"><i class="fas fa-church"></i></div>
+                    <h3>EkklesiaFlow <span class="project-badge badge-web">Web</span></h3>
+                    <p>Solution intégrale pour la gestion d'églises et suivi pastoral</p>
+                    <div class="project-tech">
+                        <span>Epaphrodite</span><span>PostgreSQL</span><span>Bootstrap 5</span><span>WebSocket</span>
+                    </div>
+                    <ul class="project-features" style="list-style: none; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Gestion membres, groupes, cellules</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Statistiques et rapports d'évolution</li>
+                        <li><i class="fas fa-check-circle" style="color: #ff6b35;"></i> Gestion dons et planning activités</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences -->
+    <section id="experiences">
+        <div class="container">
+            <h2 class="section-title">Parcours <span class="gradient-text">Professionnel</span></h2>
+            <p class="section-subtitle">Mon cheminement et mes réalisations clés</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Développeur Freelance</h4>
+                        <div style="color: #ff6b35; font-size: 0.85rem;">RIMAK SCHOOL & EPV LA RÉUSSITE</div>
+                        <p>Conception de sites web dynamiques, plateformes de gestion scolaire, communication parents-enseignants.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Développeur Full Stack</h4>
+                        <div style="color: #ff6b35; font-size: 0.85rem;">Ministère Éducation Nationale - DESPS</div>
+                        <p>Développement de mena-desps.org, optimisation des performances, sécurisation des applications.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Contributeur Open Source</h4>
+                        <div style="color: #ff6b35; font-size: 0.85rem;">Epaphrodite Framework</div>
+                        <p>Amélioration des performances, renforcement sécurité, ajout de fonctionnalités.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">Discutons de votre <span class="gradient-text">projet</span></h2>
+                <p class="section-subtitle">Disponible pour des missions freelance ou collaborations</p>
+                
+                <div class="contact-info">
+                    <a href="tel:+2250708893544" class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <span>+225 07 08 89 35 44</span>
+                    </a>
+                    <a href="mailto:jonathaneklou@gmail.com" class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <span>jonathaneklou@gmail.com</span>
+                    </a>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Abidjan, Côte d'Ivoire</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/Jonath-Mess-eklou" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jonathan-eklou" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-medium-m"></i></a>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,107,53,0.1); border-radius: 20px;">
+                    <p style="color: #ff6b35;"><i class="fas fa-quote-left"></i> Je transforme vos idées en réalité digitale, avec passion et expertise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Jonathan EKLOU - Développeur Full Stack & Passionné de Cybersécurité</p>
+    </footer>
+
+    <script>
+        // Animation canvas étoiles
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < 200; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = Math.random() * 1.5;
+                const alpha = Math.random() * 0.5;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.fill();
+            }
+        }
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            drawStars();
+        });
+        
+        resizeCanvas();
+        drawStars();
+        
+        // Animation des étoiles
+        setInterval(() => {
+            drawStars();
+        }, 30000);
+        
+        // Cursor personnalisé
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorFollower.style.left = e.clientX + 'px';
+            cursorFollower.style.top = e.clientY + 'px';
+        });
+        
+        // Effet hover sur les éléments cliquables
+        const hoverElements = document.querySelectorAll('a, button, .skill-card-3d, .project-card-3d, .contact-card');
+        
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+                cursorFollower.style.width = '50px';
+                cursorFollower.style.height = '50px';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+            });
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.project-card-3d, .timeline-item, .skill-card-3d').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Typed text animation
+        const words = ['Développeur Full Stack', 'Créateur d\'applications', 'Expert Cybersécurité', 'Freelance créatif'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedElement = document.getElementById('typed');
+        
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typedElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+                return;
+            }
+            
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+            
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
+        }
+        
+        typeEffect();
+    </script>
+</body>
+</html>
